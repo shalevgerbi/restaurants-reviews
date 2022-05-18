@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function Login(props) {
   const initialUserState = {
@@ -9,7 +9,6 @@ export default function Login(props) {
   
   
   const [user, setUser] = useState(initialUserState);
-  let location = useLocation();
   let navigate =useNavigate();
   
   const handleInputChange = (e) => {
