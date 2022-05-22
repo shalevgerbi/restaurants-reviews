@@ -31,9 +31,12 @@ export default class RestaurantsController {
     }
     static async apiGetRestaurantById(req,res,next){
         try{
-            //params is after the slash (/) query is after (?)
+            
+            
             let id = req.params.id || {}
+            
             let restaurant = await RestaurantsDAO.getRestaurantByID(id)
+            console.log("restaurant",restaurant)
             if(!restaurant){
                 res.status(404).json({error: "Not found"})
                 return
@@ -47,7 +50,6 @@ export default class RestaurantsController {
     }
     static async apiGetRestaurantCuisines(req,res,next){
         try{
-            //params is after the slash (/) query is after (?)
             
             let cuisines = await RestaurantsDAO.getCuisines();
             res.json(cuisines)

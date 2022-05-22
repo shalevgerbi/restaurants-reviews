@@ -23,7 +23,7 @@ export default class RestaurantsDAO {
   static async getRestaurants({
     filters = null,
     page = 0,
-    restaurantsPerPage = 20,
+    restaurantsPerPage = 50,
   } = {}) {
     let query;
     if (filters) {
@@ -107,16 +107,15 @@ export default class RestaurantsDAO {
       throw e;
     }
   }
-  static async getCuisines(){
-      let cuisines = []
-      try{
-          //get all the distinct cuisines
-          cuisines = await restaurants.distinct("cuisine")
-          return cuisines;
-      }
-      catch (e) {
-          console.error(`Unable to get cuisines, ${e}`);
-          return cuisines;
-      }
+  static async getCuisines() {
+    let cuisines = [];
+    try {
+      //get all the distinct cuisines
+      cuisines = await restaurants.distinct("cuisine");
+      return cuisines;
+    } catch (e) {
+      console.error(`Unable to get cuisines, ${e}`);
+      return cuisines;
+    }
   }
 }

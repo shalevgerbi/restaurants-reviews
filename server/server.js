@@ -9,9 +9,9 @@ app.use(cors());
 app.use(express.json());
 
 //the main api url
-app.use("/api/v1/restaurants",restaurants)
+app.use("/api/v1/restaurants", restaurants);
 
 //if we get 404 print error
-app.use("*",(req,res) => res.status(404).json({error: "not found"}))
+app.use("*", (req, res) => res.status(404).json({ error: "not found" }));
 
 export default app;

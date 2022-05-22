@@ -19,12 +19,12 @@ export default function RestaurantsList(props) {
     const searchName = e.target.value;
     setSearchName(searchName);
   };
-//setting search value for zip
+  //setting search value for zip
   const onChangeSearchZip = (e) => {
     const searchZip = e.target.value;
     setSearchZip(searchZip);
   };
-//setting search value for cuisine selection
+  //setting search value for cuisine selection
   const onChangeSearchCuisine = (e) => {
     const searchCuisine = e.target.value;
     setSearchCuisine(searchCuisine);
@@ -53,7 +53,7 @@ export default function RestaurantsList(props) {
         console.log(e);
       });
   };
-//fetch again restaurants //refresh//
+  //fetch again restaurants //refresh//
   const refreshList = () => {
     retrieveRestaurants();
   };
@@ -74,11 +74,11 @@ export default function RestaurantsList(props) {
   const findByName = () => {
     find(searchName, "name");
   };
-//call the generic function to find by zip
+  //call the generic function to find by zip
   const findByZip = () => {
     find(searchZip, "zipcode");
   };
-//call the generic function to find by cuisine
+  //call the generic function to find by cuisine
   const findByCuisine = () => {
     if (searchCuisine === "All Cuisines") refreshList();
     else find(searchCuisine, "cuisine");
@@ -93,6 +93,7 @@ export default function RestaurantsList(props) {
             placeholder="Search by name"
             value={searchName}
             onChange={onChangeSearchName}
+            onKeyDown={(e) => e.code==="Enter" ? findByName() : null}
           />
           <div className="input-group-append">
             <button
@@ -111,6 +112,7 @@ export default function RestaurantsList(props) {
             placeholder="Search by zip"
             value={searchZip}
             onChange={onChangeSearchZip}
+            onKeyDown={(e) => e.code==="Enter" ? findByZip() : null}
           />
           <div className="input-group-append">
             <button
@@ -128,7 +130,7 @@ export default function RestaurantsList(props) {
               return (
                 <option key={cuisine} value={cuisine}>
                   {" "}
-                  {cuisine.substr(0, 20)}
+                  {cuisine.slice(0, 20)}
                 </option>
               );
             })}

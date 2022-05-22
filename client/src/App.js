@@ -3,49 +3,41 @@ import { Routes, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import RestaurantsList from "./components/RestaurantsList";
 import AddReview from "./components/AddReview";
-import Restaurants from "./components/Restaurants";
+import Restaurants from "./components/Restaurant";
 import Login from "./components/Login";
 import NavBar from "./components/NavBar";
 
 function App() {
   const [user, setUser] = useState(null);
 
-  async function login(user = null) {
+  function login(user = null) {
     setUser(user);
   }
-  async function logout() {
+  function logout() {
     setUser(null);
   }
   return (
     <div>
-      
-      <NavBar user={user} logout={logout}/>
+      <NavBar user={user} logout={logout} />
 
-      <div className="container mt-3">
+      <div className="container mt-3" data-spy="scroll">
         <Routes>
-          <Route
-            path="/"
-            element={<RestaurantsList user={user}/>}
-          />
+          <Route path="/" element={<RestaurantsList user={user} />} />
           <Route
             path="/restaurants"
-            element={<RestaurantsList user={user}/>}
+            element={<RestaurantsList user={user} />}
           />
-          
+
           <Route
-          exact
+            exact
             path="/restaurants/:id/review"
-            element={<AddReview user={user}/>}
+            element={<AddReview user={user} />}
           />
           <Route
             path="/restaurants/:id"
-            element={<Restaurants user={user}/>}
+            element={<Restaurants user={user} />}
           />
-          <Route
-          exact
-            path="/login"
-            element={<Login login={login}/>}
-          />
+          <Route exact path="/login" element={<Login login={login} />} />
         </Routes>
       </div>
     </div>
