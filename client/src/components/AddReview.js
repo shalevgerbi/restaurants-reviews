@@ -8,7 +8,7 @@ export default function AddReview(props) {
   let { id } = useParams();
   let editing = false;
   console.log(props);
-  console.log(location.state)
+  console.log(location.state);
 
   if (location.state && location.state.currentReview) {
     editing = true;
@@ -57,10 +57,7 @@ export default function AddReview(props) {
           {submitted ? (
             <div>
               <h4>You submitted successfully!</h4>
-              <Link
-                to={"/restaurants/" + id}
-                className="btn btn-success"
-              >
+              <Link to={"/restaurants/" + id} className="btn btn-success">
                 Back to Restaurant
               </Link>
             </div>
